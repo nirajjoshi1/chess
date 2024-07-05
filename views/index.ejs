@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%=title%></title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+      }
+
+      .main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 6rem;
+      }
+      .chessBoard {
+        display: grid;
+        grid-template-columns: repeat(8, minmax(0, 1fr));
+        grid-template-rows: repeat(8, minmax(0, 1fr));
+        width: 400px;
+        height: 400px;
+        transform: rotate(0deg);
+      }
+
+      .piece.white {
+        color: rgb(212, 181, 181);
+      }
+      .piece.black {
+        color: #000;
+      }
+      .flipped {
+        transform: rotate(180deg);
+      }
+      .square {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .square.light {
+        background-color: #fff;
+      }
+      .square.dark {
+        background-color: #d84545;
+      }
+      .piece {
+        font-size: 36px;
+        cursor: pointer;
+      }
+      .piece.draggable {
+        cursor: grab;
+      }
+      .dragging {
+        opacity: 0.5;
+      }
+      .flipped .piece {
+        transform: rotate(180deg);
+      }
+      h1 {
+        font-style: italic;
+        font-size: 40px;
+        margin-left: 16px;
+        font-weight: 600;
+        display: none;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="main w-full h-screen bg-zinc-900 flex justify-center items-center"
+    >
+      <div class="chessBoard bg-red-400 w-96 h-96"></div>
+      <div class="res">
+        <h1 class="text-white ml-10 text-2xl display-none">aaa</h1>
+      </div>
+    </div>
+    <script
+      src="https://cdn.socket.io/4.7.5/socket.io.min.js"
+      integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"
+      integrity="sha512-xRllwz2gdZciIB+AkEbeq+gVhX8VB8XsfqeFbUh+SzHlN96dEduwtTuVuc2u9EROlmW9+yhRlxjif66ORpsgVA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="/javascripts/index.js"></script>
+  </body>
+</html>
